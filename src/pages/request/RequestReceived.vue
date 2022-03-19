@@ -1,28 +1,30 @@
 <template>
-  <base-dialog
-    :show='!!error'
-    title='An error occurred'
-    @close='handleError'
-  >
-    <p>{{ error }}</p>
-  </base-dialog>
-  <section>
-    <base-card>
-      <header>
-        <h2>Request Received</h2>
-      </header>
-      <base-spinner v-if='isloading' />
-      <ul v-else-if='hasRequests && !isloading'>
-        <request-item
-          v-for='req in receivedRequests'
-          :key='req.id'
-          :email='req.userEmail'
-          :message='req.message'
-        />
-      </ul>
-      <h3 v-else>You haven`t received any requests yet</h3>
-    </base-card>
-  </section>
+  <div>
+    <base-dialog
+      :show='!!error'
+      title='An error occurred'
+      @close='handleError'
+    >
+      <p>{{ error }}</p>
+    </base-dialog>
+    <section>
+      <base-card>
+        <header>
+          <h2>Request Received</h2>
+        </header>
+        <base-spinner v-if='isloading' />
+        <ul v-else-if='hasRequests && !isloading'>
+          <request-item
+            v-for='req in receivedRequests'
+            :key='req.id'
+            :email='req.userEmail'
+            :message='req.message'
+          />
+        </ul>
+        <h3 v-else>You haven`t received any requests yet</h3>
+      </base-card>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -50,7 +52,7 @@ export default {
     }
   },
   created() {
-    this.loadRequests()
+    this.loadRequests();
   },
   methods: {
     async loadRequests() {
@@ -60,7 +62,7 @@ export default {
       } catch (error) {
         this.error = error.message || 'Something failed';
       }
-      this.isloading  = false;
+      this.isloading = false;
     },
     handleError() {
       this.error = null;
