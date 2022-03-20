@@ -4,7 +4,7 @@ import CoachDetail from '@/pages/coaches/CoachDetail';
 import CoachRegistration from '@/pages/coaches/CoachRegistration';
 import ContactCoach from '@/pages/request/ContactCoach';
 import RequestReceived from '@/pages/request/RequestReceived';
-// import NotFound from '@/pages/NotFound';
+import NotFound from '@/pages/NotFound';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -21,7 +21,7 @@ const router = createRouter({
     },
     { path: '/register', component: CoachRegistration },
     { path: '/requests', component: RequestReceived },
-    // { path: '/:notFound(.*', component: NotFound },
+    { path: '/:notFound(.*)*', component: NotFound }
   ]
 });
 
